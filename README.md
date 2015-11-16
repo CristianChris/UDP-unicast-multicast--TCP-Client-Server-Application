@@ -28,10 +28,40 @@ After filltering, sorting and grouping client saves the result to a file.
 
 
 
-######Here is an example:
-We have a graph with 4 nodes.
+#####Here is an example:
+We have a graph with 4 nodes:
 
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/1.png "Example 1 model")
+
+Each node have some data that is stored in data files (```data_node_2.json, data_node_3.json,...,data_node_5.json```).
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/2.png "Data entry of each node")
+
+Using our logic we understand that the MAVEN node is node number 3 because it have the biggest number of neighbours and the biggest data (data entry).
+
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/3.png "MAVEN node")
+
+Once we have imagend our grapth we can start to create it.
+
+First we need to create 4 localhost addreses on lo0 interface. For this we can write the following command in our terminal:
+```sudo ifconfig lo0 alias 127.0.0.2 255.255.255.0```
+```sudo ifconfig lo0 alias 127.0.0.3 255.255.255.0```
+```sudo ifconfig lo0 alias 127.0.0.4 255.255.255.0```
+```sudo ifconfig lo0 alias 127.0.0.5 255.255.255.0```
+
+After we created our virtual localhost addreses we run 4 times our ```node.js``` file with the logical parameters:
+
+(```node node.js HOST, PORT, Neighbours HOST, data_file.json```).
+
+1) ```node node.js 127.0.0.2 3000 '["127.0.0.5", "127.0.0.3"]' data_node_2.json``` 
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_2.png "node_2")
+2) ```node node.js 127.0.0.3 3000 '["127.0.0.2", "127.0.0.4"]' data_node_3.json```
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_3.png "node_3")
+3) ```node node.js 127.0.0.4 3000 '["127.0.0.3" ]' data_node_4.json```
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_4.png "node_4")
+4) ```node node.js 127.0.0.5 3000 '["127.0.0.2" ]' data_node_5.json```
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_5.png "node_5")
+
+Once we have created our grapth and setted up we run our ```client.js``` by the command ```node client.js```
 
 
 
