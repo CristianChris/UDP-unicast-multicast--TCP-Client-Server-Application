@@ -3,9 +3,7 @@
 In order to run our aplication we will need to install several tools for that:
 
 1. [NodeJS](https://nodejs.org/en/) as a JavaScript environment
-2. Node.js modules:
-  2.1 net
-  2.2 JsonSocket
+2. Node.js modules: net; JsonSocket
 
 After the installation, from our terminal we will need to run first our Redis service to serve us the brokering. For this just type the following command: ```redis-server```
 
