@@ -1,10 +1,10 @@
 // Node.js modules
 var net = require('net');
 var JsonSocket = require('json-socket');
-var clientTCP = net.createServer();
 var _ = require('underscore');
 var fs = require('fs');
 var dgram = require('dgram');
+
 var clientUDP = dgram.createSocket('udp4');
 
 // Client set up
