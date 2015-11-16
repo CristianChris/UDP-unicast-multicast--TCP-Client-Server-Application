@@ -1,0 +1,44 @@
+{
+    "4.1": {
+        "firstName": "test_1",
+        "lastName": "test_1",
+        "departament": "Computer Science",
+        "salary": "140"
+    },
+    "4.2": {
+        "firstName": "test_2",
+        "lastName": "test_2",
+        "departament": "Computer Science",
+        "salary": "220"
+    },
+    "4.3": {
+        "firstName": "test_3",
+        "lastName": "test_3",
+        "departament": "Information Technology",
+        "salary": "530"
+    },
+    "4.4": {
+        "firstName": "test_4",
+        "lastName": "test_4",
+        "departament": "Computer Science",
+        "salary": "240"
+    },
+    "4.5": {
+        "firstName": "test_5",
+        "lastName": "test_5",
+        "departament": "Information Technology",
+        "salary": "600"
+    },
+    "4.6": {
+        "firstName": "test_6",
+        "lastName": "test_6",
+        "departament": "Computer Science",
+        "salary": "240"
+    },
+    "4.7": {
+        "firstName": "test_7",
+        "lastName": "test_7",
+        "departament": "Information Technology",
+        "salary": "600"
+    }
+}
