@@ -52,19 +52,19 @@ After we created our virtual localhost address we run 4 times our ```node.js``` 
 
 (```node node.js HOST, PORT, Neighbours HOST, data_file.json```).
 
-1) ```node node.js 127.0.0.2 3000 '["127.0.0.5", "127.0.0.3"]' data_node_2.json``` 
+2) ```node node.js 127.0.0.2 3000 '["127.0.0.5", "127.0.0.3"]' data_node_2.json``` 
 
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_2.png "node_2")
 
-2) ```node node.js 127.0.0.3 3000 '["127.0.0.2", "127.0.0.4"]' data_node_3.json```
+3) ```node node.js 127.0.0.3 3000 '["127.0.0.2", "127.0.0.4"]' data_node_3.json```
 
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_3.png "node_3")
 
-3) ```node node.js 127.0.0.4 3000 '["127.0.0.3" ]' data_node_4.json```
+4) ```node node.js 127.0.0.4 3000 '["127.0.0.3" ]' data_node_4.json```
 
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_4.png "node_4")
 
-4) ```node node.js 127.0.0.5 3000 '["127.0.0.2" ]' data_node_5.json```
+5) ```node node.js 127.0.0.5 3000 '["127.0.0.2" ]' data_node_5.json```
 
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_5.png "node_5")
 
@@ -74,5 +74,5 @@ Once we have created our graph and settled up, we can run our ```client.js``` by
 
 As we see the ```client.js``` found the correct MAVEN (node 3) that have the address ```127.0.0.3``` and further collected the data that was filtered and saved.
 
-####Under construction
+
 
