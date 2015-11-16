@@ -69,19 +69,19 @@ function mavenRequest () {
         // Sending a command to our maven
         socket.sendMessage({command: 'MavenRequestData'});
         socket.on('message', function(MavenRequestData) {
-            console.log(MavenRequestData);
-            // console.log('Data recived: '+JSON.stringify(MavenRequestData)+'\n');
-            // // Applying our filter function
-            // var filterResult = filtering(MavenRequestData,100,'Computer Science');
-            // console.log('Filter result'+JSON.stringify(filterResult));
-            // // Writing our filterResult to a file
-            // fs.writeFile("./savedData.json", JSON.stringify(filterResult), function(err) {
-            //     console.log('----------------------------------------------------------------------')
-            //     console.log("Filtered result was saved in data.txt in the current directory!");
-            //     if(err) {
-            //         return console.log(err);
-            //     };
-            // });
+            // console.log(MavenRequestData);
+            console.log('Data recived: '+JSON.stringify(MavenRequestData)+'\n');
+            // Applying our filter function
+            var filterResult = filtering(MavenRequestData,100,'Computer Science');
+            console.log('Filter result'+JSON.stringify(filterResult));
+            // Writing our filterResult to a file
+            fs.writeFile("./savedData.json", JSON.stringify(filterResult), function(err) {
+                console.log('----------------------------------------------------------------------')
+                console.log("Filtered result was saved in data.txt in the current directory!");
+                if(err) {
+                    return console.log(err);
+                };
+            });
         });
     });
 };
