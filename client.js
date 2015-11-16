@@ -45,7 +45,7 @@ clientUDP.on('message', function (messageFromNodes, rinfo) {
             mavenEmployees = employees;
         };
     };
-    console.log('Curent Maven Host: ' +mavenHost+':'+PORT+' has: _' +mavenNeighbours+ '_ neighbours and '+ mavenEmployees +' employees');
+    console.log('Curent Maven Host: ' +mavenHost+':'+PORT+' has: _' +mavenNeighbours+ '_ neighbours and _'+ mavenEmployees +'_ employees');
     console.log('----------------------------------------------------------------------');
 });
 
