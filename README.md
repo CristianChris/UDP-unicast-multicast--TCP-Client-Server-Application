@@ -53,15 +53,24 @@ After we created our virtual localhost addreses we run 4 times our ```node.js```
 (```node node.js HOST, PORT, Neighbours HOST, data_file.json```).
 
 1) ```node node.js 127.0.0.2 3000 '["127.0.0.5", "127.0.0.3"]' data_node_2.json``` 
+
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_2.png "node_2")
+
 2) ```node node.js 127.0.0.3 3000 '["127.0.0.2", "127.0.0.4"]' data_node_3.json```
+
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_3.png "node_3")
+
 3) ```node node.js 127.0.0.4 3000 '["127.0.0.3" ]' data_node_4.json```
+
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_4.png "node_4")
+
 4) ```node node.js 127.0.0.5 3000 '["127.0.0.2" ]' data_node_5.json```
+
 ![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/node_5.png "node_5")
 
 Once we have created our grapth and setted up we run our ```client.js``` by the command ```node client.js```
+
+![alt tag](https://github.com/CristianChris/UDP-unicast-multicast-TCP-Client-Server-Application/blob/master/images/client.png "client")
 
 
 
