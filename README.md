@@ -1,4 +1,4 @@
-####Application's [Report](under construction)
+####Application's [Report](https://github.com/CristianChris/processing-of-distributed-collections-of-data/blob/master/Report.pdf)
 ####Running the application:
 In order to run our application we will need to install several tools for that:
 
