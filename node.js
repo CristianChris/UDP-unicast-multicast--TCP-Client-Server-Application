@@ -31,6 +31,7 @@ var MULTICAST_ADDR = '239.255.255.250';
 // Read from file data and store it to employeeDict (object of objects)
 var employeeDict =JSON.parse(fs.readFileSync('./data/'+data_file));
 
+
 // Counting the data
 var employeeDictLength = Object.keys(employeeDict).length;
 
@@ -45,8 +46,9 @@ nodeUDP.on('listening', function () {
 nodeUDP.on('message', function (messageFromClient, rinfo) {
     console.log('__Recived multicast command "'+messageFromClient+'" from the client address: ' + rinfo.address + ':' + rinfo.port );
     if (messageFromClient=='host & neighbours & employers') {
+        avgSalary = averageSalary();
         numberNeighbours = neighbours.length;
-        messageFromNodes = 'Host: '+HOST+' have: '+numberNeighbours+' neighbours and '+employeeDictLength+' employees.';
+        messageFromNodes = 'Host: '+HOST+' have: '+numberNeighbours+' neighbours and '+employeeDictLength+' employees and the average salary is '+ avgSalary;
         nodeUDP.send(messageFromNodes, 0, messageFromNodes.length, rinfo.port , rinfo.address, function () {
             console.log('____Sending answere back to the command "'+messageFromClient+'" ('+messageFromNodes+')');
         });
@@ -86,3 +88,19 @@ function neighboursDataCollection(i) {
                 });
         });
 };
+// Function that calculate the average salary from it's data
+function averageSalary () {
+    var arrSalary = [];
+    var arrSalaryInt = [];
+    var total = 0;
+    for (var id in employeeDict) {
+        arrSalary.push(employeeDict[id]["salary"]);
+    }
+    for(var i = 0; i < arrSalary.length; i++) {
+        arrSalaryInt[i] = parseInt(arrSalary[i]);
+        total = arrSalaryInt[i]+total;
+    }
+    var avg = total / arrSalaryInt.length
+    return avg;
+}
+

@@ -1,10 +1,10 @@
 // Node.js modules
 var net = require('net');
 var JsonSocket = require('json-socket');
+var clientTCP = net.createServer();
 var _ = require('underscore');
 var fs = require('fs');
 var dgram = require('dgram');
-
 var clientUDP = dgram.createSocket('udp4');
 
 // Client set up
@@ -16,6 +16,7 @@ var MULTICAST_ADDR = '239.255.255.250';
 var mavenHost = '';
 var mavenNeighbours = 0;
 var mavenEmployees = 0;
+var totalAvgSalary = [];
 
 // Bind the multicast port to our UDP client and execute functions
 clientUDP.bind(SRC_PORT, function () {
@@ -36,7 +37,9 @@ clientUDP.on('message', function (messageFromNodes, rinfo) {
     var host = String(messageFromNodes).substring(6, 15);
     var neighbours = parseInt(String(messageFromNodes).substring(22,24));
     var employees = parseInt(String(messageFromNodes).substring(39));
-    console.log('-------------Host: ' +host+':'+PORT+' has: _' +neighbours+ '_ neighbours and _'+ employees +'_ employees');
+    var AvgSalary = parseInt(String(messageFromNodes).substring(76));
+    totalAvgSalary.push(AvgSalary)
+    console.log('-------------Host: ' +host+':'+PORT+' has: _' +neighbours+ '_ neighbours and _'+ employees +'_ employees and the average salary is _'+AvgSalary+'_');
     // Choosing the maven node by some criteria(>neighbours && >employees)
     if (neighbours >= mavenNeighbours ) {
         if (employees >= mavenEmployees) {
@@ -72,8 +75,8 @@ function mavenRequest () {
             // console.log(MavenRequestData);
             console.log('Data recived: '+JSON.stringify(MavenRequestData)+'\n');
             // Applying our filter function
-            var filterResult = filtering(MavenRequestData,100,'Computer Science');
-            console.log('Filter result'+JSON.stringify(filterResult));
+            var filterResult = filtering(MavenRequestData);
+            console.log('Filter result: '+JSON.stringify(filterResult));
             // Writing our filterResult to a file
             fs.writeFile("./savedData.json", JSON.stringify(filterResult), function(err) {
                 console.log('----------------------------------------------------------------------')
@@ -87,14 +90,26 @@ function mavenRequest () {
 };
 
 // Function that filters collected data ( filter criteria: salary, departament, sorting )
-function filtering(collection,filt_sal,filt_depart) {
+function filtering(collection) {
+    // Calculating the total average salary of all the nodes that answered using UDP unicast
+    var total = 0;
+    for(var i = 0; i < totalAvgSalary.length; i++) {
+        total = totalAvgSalary[i]+total;
+    }
+    var resultTotalAvgSalary = total / totalAvgSalary.length
+    console.log('Group by departament: Computer Science; \nFiltering by salary > total average salary of all nodes ('+resultTotalAvgSalary+');\nSorting by last names.\n');
+    // grouping by departaments of the collection
     var filterDepartament = _.groupBy(collection, function(value){
                 return value.departament
     });
-    var filterSalary = _.filter(filterDepartament[filt_depart], function(num){ return num.salary > filt_sal; });
+    // filtering the 'computer science' group by salary > total average of all nodes
+    var filterSalary = _.filter(filterDepartament['Computer Science'], function(num){ return num.salary > resultTotalAvgSalary; });
+    // sorting by last name the collection
     var filterName = _.sortBy(filterSalary, 'lastName');
     return filterName
 }
+
+
 
 
 

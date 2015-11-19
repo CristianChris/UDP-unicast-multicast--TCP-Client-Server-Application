@@ -3,18 +3,18 @@
         "firstName": "Anton",
         "lastName": "Curlat",
         "departament": "Computer Science",
-        "salary": "249"
+        "salary": "440"
     },
     "2.2": {
         "firstName": "Vlad",
         "lastName": "Samburski",
         "departament": "Information Technology",
-        "salary": "379"
+        "salary": "380"
     },
     "2.3": {
         "firstName": "Ion",
         "lastName": "Postolache",
         "departament": "Architecture",
-        "salary": "123"
+        "salary": "120"
     }
 }
